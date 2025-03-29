@@ -10,8 +10,11 @@ class OutputView {
         println("시도할 회수는 몇회인가요?")
     }
 
-    fun printRaceProgress(carName: String, distance: String) {
-        println("$carName : $distance")
+    fun printScores(scores: Map<String, Int>) {
+        scores.forEach { (name, score) ->
+            println("$name : ${"-".repeat(score)}")
+        }
+        println()
     }
 
     fun printWinners(winners: List<String>) {
