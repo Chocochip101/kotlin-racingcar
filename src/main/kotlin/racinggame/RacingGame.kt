@@ -1,10 +1,10 @@
 package racinggame
 
-class RacingGame(private val cars: List<Car>) {
+class RacingGame(private val cars: List<Car>, private val numberGenerator: NumberGenerator) {
 
     fun play() {
         cars.forEach { car ->
-            if ((0..9).random() >= 4) {
+            if (numberGenerator.generate() >= 4) {
                 car.move()
             }
         }
