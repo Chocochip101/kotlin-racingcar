@@ -12,32 +12,32 @@ class RacingGameTest {
 
     @BeforeEach
     fun setUp() {
-        cars = listOf(Car("eden"), Car("lini"), Car("clover"))
+        cars = listOf(Car("eden"), Car("lini"), Car("clove"))
     }
 
     @DisplayName("랜덤 값이 4 이상이면 자동차가 전진해야 한다.")
     @Test
-    fun carsMoveWhenNumberIsGreaterThanOrEqualTo4() {
+    fun carsMoveWhenNumberIsGreaterThanOrEqualTo() {
         val alwaysMoveGenerator = FakeNumberGenerator(4)
         val racingGame = RacingGame(cars, alwaysMoveGenerator)
 
         racingGame.play()
 
         cars.forEach { car ->
-            assertThat(car.distance).isEqualTo(1)
+            assertThat(car.getDistance()).isEqualTo(1)
         }
     }
 
     @DisplayName("랜덤 값이 3 이하이면 자동차가 멈춰야 한다.")
     @Test
-    fun carsDoNotMoveWhenNumberIsLessThan4() {
+    fun carsDoNotMoveWhenNumberIsLessThan() {
         val neverMoveGenerator = FakeNumberGenerator(3)
         val racingGame = RacingGame(cars, neverMoveGenerator)
 
         racingGame.play()
 
         cars.forEach { car ->
-            assertThat(car.distance).isEqualTo(0)
+            assertThat(car.getDistance()).isEqualTo(0)
         }
     }
 }

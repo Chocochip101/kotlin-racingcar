@@ -4,7 +4,7 @@ class CarScores(cars: List<Car>) {
     private val scores = mutableMapOf<String, Int>()
 
     init {
-        cars.forEach { scores[it.name] = it.distance }
+        cars.forEach { scores[it.getName()] = it.getDistance() }
     }
 
     fun findWinners(): List<String> {

@@ -19,19 +19,19 @@ class CarTest {
     @Test
     fun move() {
         car.move()
-        assertThat(car.distance).isEqualTo(1)
+        assertThat(car.getDistance()).isEqualTo(1)
     }
 
     @DisplayName("자동차의 이름을 정상적으로 반환해야 한다.")
     @Test
     fun getName() {
-        assertThat(car.name).isEqualTo(carName)
+        assertThat(car.getName()).isEqualTo(carName)
     }
 
     @DisplayName("자동차의 초기 거리는 0이어야 한다.")
     @Test
     fun getDistance() {
-        assertThat(car.distance).isZero()
+        assertThat(car.getDistance()).isZero()
     }
 }
 
