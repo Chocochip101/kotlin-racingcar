@@ -28,7 +28,7 @@ class CarScoresTest {
     fun findWinners() {
         val winners = carScores.findWinners()
         assertThat(winners).hasSize(2)
-        assertThat(winners).contains("clove", "lini")
+        assertThat(winners).contains(name2.getName(), name3.getName())
     }
 
     @DisplayName("우승자가 1명일 때, 한 명만 우승자로 반환되어야 한다.")
@@ -43,15 +43,15 @@ class CarScoresTest {
         val winners = singleWinnerScores.findWinners()
 
         assertThat(winners).hasSize(1)
-        assertThat(winners).contains("clove")
+        assertThat(winners).contains(name2.getName())
     }
 
     @DisplayName("각 자동차의 점수를 확인할 때, 자동차 이름에 맞는 점수가 반환되어야 한다.")
     @Test
     fun getScores() {
         val scores = carScores.getScores()
-        assertThat(scores["eden"]).isEqualTo(3)
-        assertThat(scores["clove"]).isEqualTo(5)
-        assertThat(scores["lini"]).isEqualTo(5)
+        assertThat(scores[name1.getName()]).isEqualTo(3)
+        assertThat(scores[name2.getName()]).isEqualTo(5)
+        assertThat(scores[name3.getName()]).isEqualTo(5)
     }
 }

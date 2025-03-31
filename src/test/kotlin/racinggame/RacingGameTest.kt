@@ -1,5 +1,6 @@
 package racinggame
 
+import fixture.CarFixture
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
@@ -12,12 +13,12 @@ class RacingGameTest {
 
     @BeforeEach
     fun setUp() {
-        cars = listOf(Car("eden"), Car("lini"), Car("clove"))
+        cars = listOf(CarFixture.edenCar, CarFixture.liniCar, CarFixture.cloveCar)
     }
 
     @DisplayName("랜덤 값이 4 이상이면 자동차가 전진해야 한다.")
     @Test
-    fun carsMoveWhenNumberIsGreaterThanOrEqualTo() {
+    fun play_carsMoveWhenNumberIsGreaterThanOrEqualTo() {
         val alwaysMoveGenerator = FakeNumberGenerator(4)
         val racingGame = RacingGame(cars, alwaysMoveGenerator)
 
@@ -30,7 +31,7 @@ class RacingGameTest {
 
     @DisplayName("랜덤 값이 3 이하이면 자동차가 멈춰야 한다.")
     @Test
-    fun carsDoNotMoveWhenNumberIsLessThan() {
+    fun play_carsDoNotMoveWhenNumberIsLessThan() {
         val neverMoveGenerator = FakeNumberGenerator(3)
         val racingGame = RacingGame(cars, neverMoveGenerator)
 
