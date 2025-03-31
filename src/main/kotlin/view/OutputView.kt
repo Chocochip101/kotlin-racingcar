@@ -10,6 +10,10 @@ class OutputView {
         println("시도할 회수는 몇회인가요?")
     }
 
+    fun printRunResult() {
+        println(System.lineSeparator() + "실행 결과")
+    }
+
     fun printScores(scores: Map<String, Int>) {
         scores.forEach { (name, score) ->
             println("$name : ${"-".repeat(score)}")
