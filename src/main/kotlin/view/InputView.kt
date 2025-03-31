@@ -11,7 +11,6 @@ class InputView {
 
     fun readAttemptCount(): Int {
         val input = readlnOrNull() ?: throw IllegalArgumentException("시도횟수를 입력해주세요.")
-        val number = input.toIntOrNull() ?: throw IllegalArgumentException("정수를 입력해주세요.")
-        return number
+        return input.toIntOrNull() ?: throw IllegalArgumentException("정수를 입력해주세요.")
     }
 }
