@@ -8,9 +8,13 @@ class RacingGame(private val cars: List<Car>, private val numberGenerator: Numbe
 
     fun play() {
         cars.forEach { car ->
-            if (numberGenerator.generate() >= MOVE_THRESHOLD) {
-                car.move()
-            }
+            moveCar(car)
+        }
+    }
+
+    private fun moveCar(car: Car) {
+        if (numberGenerator.generate() >= MOVE_THRESHOLD) {
+            car.move()
         }
     }
 }
