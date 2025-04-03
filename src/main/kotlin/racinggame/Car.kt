@@ -1,7 +1,7 @@
 package racinggame
 
 
-class Car(private val name: CarName, private var distance: Int = 0) {
+class Car(private val name: CarName, var distance: Int = 0) {
 
     constructor(name: String) : this(CarName(name))
 
@@ -9,7 +9,5 @@ class Car(private val name: CarName, private var distance: Int = 0) {
         distance++
     }
 
-    fun getName(): String = name.getName()
-
-    fun getDistance(): Int = distance
+    fun getName(): String = name.value
 }

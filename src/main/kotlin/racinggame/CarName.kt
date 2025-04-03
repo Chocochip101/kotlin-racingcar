@@ -1,12 +1,10 @@
 package racinggame
 
-class CarName(private val value: String) {
+class CarName(val value: String) {
 
     init {
         require(value.length <= CAR_NAME_LIMIT) { ERROR_MESSAGE }
     }
-
-    fun getName(): String = value
 
     companion object {
         const val CAR_NAME_LIMIT = 5
