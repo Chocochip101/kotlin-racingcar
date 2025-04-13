@@ -1,7 +1,6 @@
 package racinggame
 
 class RacingGame(private val cars: List<Car>, private val numberGenerator: NumberGenerator) {
-
     fun play() {
         cars.forEach { moveCar(it) }
     }

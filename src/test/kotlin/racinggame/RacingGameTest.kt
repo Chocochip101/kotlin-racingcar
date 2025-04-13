@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test
 import racinggame.numberGeneratorImpl.FakeNumberGenerator
 
 class RacingGameTest {
-
     private lateinit var cars: List<Car>
 
     @BeforeEach
@@ -25,7 +24,7 @@ class RacingGameTest {
         racingGame.play()
 
         cars.forEach { car ->
-            assertThat(car.getDistance()).isEqualTo(1)
+            assertThat(car.distance).isEqualTo(1)
         }
     }
 
@@ -38,7 +37,7 @@ class RacingGameTest {
         racingGame.play()
 
         cars.forEach { car ->
-            assertThat(car.getDistance()).isEqualTo(0)
+            assertThat(car.distance).isEqualTo(0)
         }
     }
 }

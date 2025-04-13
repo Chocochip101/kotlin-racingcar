@@ -3,7 +3,6 @@ package racinggame.numberGeneratorImpl
 import racinggame.NumberGenerator
 
 class RandomNumberGenerator : NumberGenerator {
-
     override fun generate(): Int = (MIN_RANDOM_NUMBER..MAX_RANDOM_NUMBER).random()
 
     companion object {

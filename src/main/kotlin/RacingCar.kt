@@ -30,7 +30,11 @@ class RacingCar {
         return inputView.readAttemptCount()
     }
 
-    private fun processGame(attemptCount: Int, game: RacingGame, cars: List<Car>) {
+    private fun processGame(
+        attemptCount: Int,
+        game: RacingGame,
+        cars: List<Car>,
+    ) {
         outputView.printRunResult()
         repeat(attemptCount) {
             game.play()

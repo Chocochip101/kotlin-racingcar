@@ -6,7 +6,6 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
 class CarTest {
-
     private lateinit var car: Car
     private val carName = "eden"
 
@@ -19,7 +18,7 @@ class CarTest {
     @Test
     fun move() {
         car.move()
-        assertThat(car.getDistance()).isEqualTo(1)
+        assertThat(car.distance).isEqualTo(1)
     }
 
     @DisplayName("자동차의 이름을 정상적으로 반환해야 한다.")
@@ -31,7 +30,6 @@ class CarTest {
     @DisplayName("자동차의 초기 거리는 0이어야 한다.")
     @Test
     fun getDistance() {
-        assertThat(car.getDistance()).isZero()
+        assertThat(car.distance).isZero()
     }
 }
-

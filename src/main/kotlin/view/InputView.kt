@@ -3,7 +3,6 @@ package view
 private const val NAME_DELIMITER = ","
 
 class InputView {
-
     fun readCarNames(): List<String> {
         val input = readlnOrNull() ?: throw IllegalArgumentException("자동차 이름을 입력해주세요.")
         return input.split(NAME_DELIMITER).map { it.trim() }
