@@ -1,6 +1,6 @@
 package racinggame
 
-class CarName(val value: String) {
+data class CarName(val value: String) {
     init {
         require(value.length <= CAR_NAME_LIMIT) { ERROR_MESSAGE }
     }
