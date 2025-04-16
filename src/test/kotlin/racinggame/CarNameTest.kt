@@ -20,6 +20,6 @@ class CarNameTest {
             assertThrows(IllegalArgumentException::class.java) {
                 CarName("eden_babo")
             }
-        assertEquals("자동차 이름은 5글자 이하이어야 합니다.", exception.message)
+        assertEquals("자동차 이름은 5 글자 이하이어야 합니다.", exception.message)
     }
 }

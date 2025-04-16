@@ -1,10 +1,9 @@
 package fixture
 
 import racinggame.Car
-import racinggame.CarName
 
 object CarFixture {
-    val edenCar = Car(CarName("eden"), 3)
-    val liniCar = Car(CarName("lini"), 5)
-    val cloveCar = Car(CarName("clove"), 5)
+    val edenCar: Car get() = Car("eden")
+    val liniCar: Car get() = Car("lini")
+    val cloveCar: Car get() = Car("clove")
 }
