@@ -1,20 +1,22 @@
 package racinggame
 
-import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.DisplayName
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.collections.shouldContainAll
+import io.kotest.matchers.collections.shouldHaveSize
+import io.kotest.matchers.maps.shouldContain
+import io.kotest.matchers.shouldBe
 
-class CarScoresTest {
-    private lateinit var carScores: CarScores
-    private lateinit var cars: List<Car>
-    private val name1 = CarName("eden")
-    private val name2 = CarName("clove")
-    private val name3 = CarName("lini")
+class CarScoresTest : StringSpec({
 
-    @BeforeEach
-    fun setUp() {
+    val name1 = CarName("eden")
+    val name2 = CarName("clove")
+    val name3 = CarName("lini")
+
+    lateinit var cars: List<Car>
+    lateinit var carScores: CarScores
+
+    beforeTest {
         cars =
             listOf(
                 Car(name1, 3),
@@ -24,17 +26,14 @@ class CarScoresTest {
         carScores = CarScores(cars)
     }
 
-    @DisplayName("우승자가 2명일 때, 두 명이 우승자로 반환되어야 한다.")
-    @Test
-    fun findWinners() {
+    "우승자가 2명일 때, 두 명이 우승자로 반환되어야 한다." {
         val winners = carScores.findWinners()
-        assertThat(winners).hasSize(2)
-        assertThat(winners).contains(name2.value, name3.value)
+
+        winners.shouldHaveSize(2)
+        winners.shouldContainAll(name2.value, name3.value)
     }
 
-    @DisplayName("우승자가 1명일 때, 한 명만 우승자로 반환되어야 한다.")
-    @Test
-    fun findWinners_singleWinner() {
+    "우승자가 1명일 때, 한 명만 우승자로 반환되어야 한다." {
         val singleWinnerCars =
             listOf(
                 Car(name1, 3),
@@ -42,29 +41,26 @@ class CarScoresTest {
                 Car(name3, 2),
             )
         val singleWinnerScores = CarScores(singleWinnerCars)
+
         val winners = singleWinnerScores.findWinners()
 
-        assertThat(winners).hasSize(1)
-        assertThat(winners).contains(name2.value)
+        winners.shouldHaveSize(1)
+        winners[0] shouldBe name2.value
     }
 
-    @DisplayName("각 자동차의 점수를 확인할 때, 자동차 이름에 맞는 점수가 반환되어야 한다.")
-    @Test
-    fun getScores() {
+    "각 자동차의 점수를 확인할 때, 자동차 이름에 맞는 점수가 반환되어야 한다." {
         val scores = carScores.getScores()
-        assertThat(scores[name1.value]).isEqualTo(3)
-        assertThat(scores[name2.value]).isEqualTo(5)
-        assertThat(scores[name3.value]).isEqualTo(5)
+
+        scores.shouldContain(name1.value to 3)
+        scores.shouldContain(name2.value to 5)
+        scores.shouldContain(name3.value to 5)
     }
 
-    @DisplayName("자동차가 없을 때, findWinners는 예외를 던져야 한다.")
-    @Test
-    fun findWinners_throwsExceptionWhenNoCars() {
+    "자동차가 없을 때, findWinners는 예외를 던져야 한다." {
         val emptyCarScores = CarScores(emptyList())
 
-        assertThrows<NoSuchElementException> {
+        shouldThrow<NoSuchElementException> {
             emptyCarScores.findWinners()
         }
     }
-
-}
+})

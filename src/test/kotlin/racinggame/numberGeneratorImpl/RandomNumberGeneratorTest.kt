@@ -1,15 +1,14 @@
 package racinggame.numberGeneratorImpl
 
-import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.DisplayName
-import org.junit.jupiter.api.Test
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.ints.shouldBeBetween
 
-class RandomNumberGeneratorTest {
-    @DisplayName("랜덤 번호는 0과 9 사이에 생성된다.")
-    @Test
-    fun generate() {
+class RandomNumberGeneratorTest : StringSpec({
+
+    "랜덤 번호는 0과 9 사이에 생성된다." {
         val randomNumberGenerator = RandomNumberGenerator()
-        assertThat(randomNumberGenerator.generate())
-            .isBetween(0, 9)
+        val number = randomNumberGenerator.generate()
+
+        number.shouldBeBetween(0, 9)
     }
-}
+})
