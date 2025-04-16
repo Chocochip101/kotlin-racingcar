@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class CarScoresTest {
     private lateinit var carScores: CarScores
@@ -55,4 +56,15 @@ class CarScoresTest {
         assertThat(scores[name2.value]).isEqualTo(5)
         assertThat(scores[name3.value]).isEqualTo(5)
     }
+
+    @DisplayName("자동차가 없을 때, findWinners는 예외를 던져야 한다.")
+    @Test
+    fun findWinners_throwsExceptionWhenNoCars() {
+        val emptyCarScores = CarScores(emptyList())
+
+        assertThrows<NoSuchElementException> {
+            emptyCarScores.findWinners()
+        }
+    }
+
 }
